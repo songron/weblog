@@ -6,7 +6,7 @@ weblog
 Download
 --------
     $ git clone https://github.com/ghostrong/weblog.git
-    
+
 Quick Start
 -----------
 
@@ -17,11 +17,11 @@ Quick Start
 - 运行 app
 
     $ python myapp.py
-    
+
 通过Admin 管理数据
 ------------------
 
-    http://162.105.146.245:5555/blog/admin/
+    http://localhost:5555/blog/admin/
 
 注意根据需要修改访问权限。
 

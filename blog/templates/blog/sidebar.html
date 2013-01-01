@@ -1,0 +1,92 @@
+	<div class="about-me">
+ 	    <h3>关于作者</h3>
+        <p>
+            <a href="/blog/about/">
+                <img src="{{g.user.avatar}}" width="42" height="42" alt="firefox" class="align-left" />
+            </a>
+            {{ g.user.intro }}
+            <a href="/blog/about/">了解更多...</a>
+	    </p>
+    </div>
+
+	<div class="sidemenu">
+
+		<h3>博客分类</h3>
+        <ul>
+        {% for category in categories %}
+			<li><a href="/blog/category/{{category.id}}">{{category.name}}</a></li>
+        {% endfor %}
+		</ul>
+
+	</div>
+
+    <!--
+    <div class="sidemenu popular">
+		<h3>点击排行</h3>
+		<ul>
+		    <li><a href="/article/1">Python中time模块详解
+				<span>发表于2011年五月5日 12:58 a.m.</span></a>
+            </li>
+		</ul>
+	</div>
+    -->
+	
+    <!--
+	<div class="tagclouds">
+		<h3>标签云</h3>
+		<ul>
+			<li><a href="/tag/django/" style="font-size: 22px;">Django</a></li>
+			<li><a href="/tag/golang/" style="font-size: 16px;">golang</a></li>
+		</ul>
+	</div>
+    -->
+	
+    <!--
+	<div>
+		<h3>扫描访问</h3>
+		<img alt="" src="http://goo.gl/WZkcN.qr" />
+    </div>
+    -->
+	
+    <!--
+	<div>
+		<h3>{{ g.user.name }}的微博</h3>
+		<iframe width="100%" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=400&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=1883113397&verifier=45ddb58d&dpc=1"></iframe>
+	</div>
+    -->
+	
+    <!--
+	<div>
+		<h3>喜欢这个博客？</h3>
+		<p style="margin-left: 4px;"><g:plusone href=""></g:plusone></p>
+    </div>
+    -->
+	
+	<div id="log">
+    <!--
+		<h3>登录</h3>
+		
+			
+		<a href="/accounts/google/login/" class='login' rel="tooltip" data-original-title="点击用Google账号登陆"><img alt="" src="/static/blog/coolblue/images/google_48.png" ></a>
+			
+			
+		<a href="/accounts/weibo/login/" class='login' rel="tooltip" data-original-title="点击用新浪微博账号登陆"><img alt="" src="/static/blog/coolblue/images/weibo_48.png" ></a>
+			
+			
+		<a href="/accounts/qqweibo/login/" class='login' rel="tooltip" data-original-title="点击用腾讯微博账号登陆"><img alt="" width="48" src="/static/blog/coolblue/images/txweibo.jpg" ></a>
+			
+			
+		<a href="/accounts/renren/login/" class='login' rel="tooltip" data-original-title="点击用人人网账号登陆"><img alt="" width="48" src="/static/blog/coolblue/images/renren_100.png" ></a>
+			
+		
+		
+		<script language="JavaScript">
+			$(function() {
+				$('div#log a').tooltip({
+					placement: 'bottom'
+				});
+			});
+		</script>
+    -->
+	</div>
+

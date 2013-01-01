@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html class="ie7 oldie"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 oldie"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<meta property="wb:webmaster" content="3caf5a5b94e6991e" />
+	
+	<link rel="shortcut icon" href="/static/blog/coolblue/images/chine.ico"/>
+	
+	<title> 关于作者 | {{ g.user.name }}的博客</title>
+	
+	<link type="text/css" rel="stylesheet" href="/static/blog/coolblue/css/bootstrap.min.css"><link>
+	<link rel="stylesheet" type="text/css" media="screen" href="/static/blog/coolblue/css/coolblue.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/static/blog/coolblue/css/chine.css" />
+	
+	<script src="/static/blog/coolblue/js/jquery-1.7.2.min.js"></script>
+	<script src="/static/blog/coolblue/js/scrollToTop.js"></script>
+	<script src="/static/blog/coolblue/js/inputFocusOrBlur.js"></script>
+	<script src="/static/blog/coolblue/js/jquery.form.js"></script> 
+	<script src="/static/blog/coolblue/js/bootstrap-transition.js"></script> 
+	<script src="/static/blog/coolblue/js/bootstrap-tooltip.js"></script>
+	<script src="/static/blog/coolblue/js/bootstrap-modal.js"></script> 
+	<script src="/static/blog/coolblue/js/subscribe.js"></script> 
+	
+	<!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	
+	
+</head>
+<body id="top">
+	
+	<!--header -->
+<div id="header-wrap"><header>
+{% include 'blog/header.html' %}
+<!--/header-->
+</header></div>
+
+	
+	<!-- content-wrap -->
+	<div id="content-wrap">
+	
+	    <!-- content -->
+	    <div id="content" class="clearfix">
+	    	
+<!-- main -->
+<div id="main">
+
+<div class="post indent">
+	<h2 style="margin-bottom: 15px;"><a href="/blog/about/">关于作者</a></h2> 
+    <p><img src="{{ g.user.avatar_large }}" alt="头像" width="500" height="375" /></p>
+    <p style="padding-right:5px;">{{ g.user.intro }}</p>
+    <p><!-- pagebreak --></p>
+<h4>我的联系方式</h4>
+<ul>
+<li><strong>新浪微博</strong>：<a href="{{g.user.weibo}}" target="_blank">{{ g.user.weibo }}</a></li>
+<li>Email：{{g.user.email}}</li>
+</ul>
+<h4>关于本博客</h4>
+<p>Powered by<a href="http://flask.pocoo.org/" target="_blank">Flask</a></p>
+<p>推荐使用Chrome/Firefox进行浏览。</p>
+</div>
+
+<div class="post indent">
+</div>
+
+<!-- main -->
+</div>
+
+<!-- sidebar -->
+<div id="sidebar">
+{% include 'blog/sidebar.html' %}
+<!-- /sidebar -->
+</div>
+
+	    <!-- content -->
+		</div>
+	
+	<!-- /content-out -->
+	</div>
+	
+	
+		<!-- extra -->
+<div id="extra-wrap"><div id="extra" class="clearfix">
+{% include 'blog/extra.html' %}
+<!-- /extra -->
+</div></div>
+
+<!-- footer -->
+<footer>
+{% include 'blog/footer.html' %}
+<!-- /footer -->
+</footer>
+
+</body>

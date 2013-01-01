@@ -1,0 +1,25 @@
+   <form id="quick-search" method="get" action="/blog/search/">
+      <fieldset class="search">
+         <label for="q">Search:</label>
+         <input class="tbox" id="qsearch" type="text" name="q" value="Search..." title="开始输入，按回车键进行搜索" onfocus="clS(1);" onblur="clS(0);" />
+         <button class="btn" title="点击搜索">Search</button>
+      </fieldset>
+   </form>
+   
+   <script type="text/javascript"> 
+        function clS(t){
+                //禁用搜索
+                return True;
+                var srch = document.getElementById('qsearch'), val = srch.value.toString().toLowerCase(), re = /^\s+$/;
+                if(t) {
+                        if(val == 'search...' || val == 'search'){
+                                srch.value = '';
+                        }
+                } else {
+                        if(val == 'search...' || val == 'search' || val == '' || re.test(val)) {
+                                srch.value = 'Search...';
+                        }
+                }
+        }
+    </script> 
+

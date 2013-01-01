@@ -1,0 +1,19 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+
+{% block head %}
+    <link href="{{ url_for('admin.static', filename='select2/select2.css') }}" rel="stylesheet">
+    <link href="{{ url_for('admin.static', filename='css/datepicker.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {% call lib.form_tag() %}
+        {{ lib.render_form_fields(form) }}
+        {{ lib.render_form_buttons(return_url) }}
+    {% endcall %}
+{% endblock %}
+
+{% block tail %}
+    <script src="{{ url_for('admin.static', filename='js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ url_for('admin.static', filename='js/form.js') }}"></script>
+{% endblock %}

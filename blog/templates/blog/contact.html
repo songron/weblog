@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html class="ie7 oldie"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 oldie"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<meta property="wb:webmaster" content="3caf5a5b94e6991e" />
+	
+	<link rel="shortcut icon" href="/static/blog/coolblue/images/chine.ico"/>
+	
+	<title> 给作者留言 - {{g.user.name}}的博客</title>
+	
+	<link type="text/css" rel="stylesheet" href="/static/blog/coolblue/css/bootstrap.min.css"><link>
+	<link rel="stylesheet" type="text/css" media="screen" href="/static/blog/coolblue/css/coolblue.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/static/blog/coolblue/css/chine.css" />
+	
+	<script>window.jQuery || document.write('<script src="/static/blog/coolblue/js/jquery-1.7.2.min.js"><\/script>')</script>
+	<script src="/static/blog/coolblue/js/scrollToTop.js"></script>
+	<script src="/static/blog/coolblue/js/inputFocusOrBlur.js"></script>
+	<script src="/static/blog/coolblue/js/jquery.form.js"></script> 
+	<script src="/static/blog/coolblue/js/bootstrap-transition.js"></script> 
+	<script src="/static/blog/coolblue/js/bootstrap-tooltip.js"></script>
+	<script src="/static/blog/coolblue/js/bootstrap-modal.js"></script> 
+	<script src="/static/blog/coolblue/js/subscribe.js"></script> 
+	
+	<!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	
+	<script src="/static/blog/coolblue/js/comment.js"></script> 
+	<script language="JavaScript">
+		ajaxUrl = "/comment/bloguser/";
+		var commentTips = {
+			success: "<i class='icon-ok'></i>留言成功！",
+			miss: "<i class='icon-exclamation-sign'></i>留言失败，请填写所有必填信息！",
+			fail: "<i class='icon-exclamation-sign'></i>留言失败，请确保全部信息填写正确！",
+			nochn: "<i class='icon-exclamation-sign'></i>留言失败，评论中必须包含中文！"
+		}
+	</script>
+
+</head>
+<body id="top">
+	
+	<!--header -->
+<div id="header-wrap"><header>
+{% include 'blog/header.html' %}
+<!--/header-->
+</header></div>
+
+	
+	<!-- content-wrap -->
+	<div id="content-wrap">
+	
+	    <!-- content -->
+	    <div id="content" class="clearfix">
+	    	
+			<!-- main -->
+			<div id="main">
+				
+
+
+<div class="post">
+	<p class="highlight"><a href="#commentform">给作者留言</a></p>
+</div>
+
+<!-- post-bottom-section -->
+<div class="post-bottom-section" id="comments">
+	
+	
+	<h4>{{ comments|length }}条留言</h4>
+	
+
+    <div class="primary">
+
+    	<ol class="commentlist">
+		   	{% for c in comments %}	    
+            <li id="comment-{{c.id}}" class="depth-1">
+		        <div class="comment-info">
+			        <img alt="" 
+                      src="{% if c.avatar %}{{ c.avatar }}
+                      {% else %}/static/blog/coolblue/images/gravatar.jpg{% endif %}" 
+                      class="avatar" height="40" width="40" />
+					<cite>
+						<a href="#comment-{{c.id}}" onclick="return false;">{{ c.username }}</a> 说： <br />
+							<span class="comment-data"><a href="#comment-{{c.id}}" title="" onclick="return false;">{{ c.post_date|timestr2 }}</a></span>
+					</cite>
+				</div>
+				<div class="comment-text">
+					<p>{{ c.content }}</p>
+					<div class="reply">
+						<a rel="nofollow" class="comment-reply-link" href="#comment-{{c.id}}" 
+                        name="回复{{ c.username }}：">回复</a>
+ 					</div>
+				</div>
+		    </li>
+            {% endfor %}
+        <li id="end-of-comment"></li>
+        <!-- /comment-list -->
+		</ol>
+
+    <!-- /primary -->
+    </div>
+
+ </div>
+
+
+
+<div class="post-bottom-section">
+
+    <h4>给作者留言</h4>
+    <a name="commentform"></a>
+
+    <div class="primary">
+
+    	<form action="/blog/new_comment" method="post" id="commentform">
+			<input type="hidden" name="avatar" id="id_avatar" />
+			<input type="hidden" name="reply_to_comment" id="id_reply_to_comment" />
+			<input type="hidden" name="article" value="{{ article.id }}" id="id_article" />
+       	    <div>
+			    <label for="username">昵称 <span>*</span></label>
+				<input onblur="inputFocusOrBlur(this, 1, &#39;你的昵称&#39;);" name="username" maxlength="50" onfocus="inputFocusOrBlur(this, 0, &#39;你的昵称&#39;);" type="text" id="name" value="你的昵称" tabindex="1" />
+			</div>
+            <div>
+				<label for="email_address">电子邮箱（会为你保密） <span>*</span></label>
+				<input onblur="inputFocusOrBlur(this, 1, &#39;你的邮箱&#39;);" name="email_address" maxlength="75" onfocus="inputFocusOrBlur(this, 0, &#39;你的邮箱&#39;);" type="text" id="email" value="你的邮箱" tabindex="2" />
+			</div>
+            <div>
+				<label for="site">网址</label>
+				<input onblur="inputFocusOrBlur(this, 1, &#39;你的网站&#39;);" name="site" maxlength="200" onfocus="inputFocusOrBlur(this, 0, &#39;你的网站&#39;);" type="text" id="website" value="你的网站" tabindex="3" />
+			</div>
+            <div>
+				<label for="content">您的留言 <span>*</span></label>
+				<textarea tabindex="4" rows="10" cols="18" name="content" id="message"></textarea>
+			</div>
+            <div class="no-border">
+			    <input class="button" type="submit" value="确认留言" tabindex="5" />
+			</div>
+
+       </form>
+
+    </div>
+</div>
+
+
+				
+				<div id="subscribemodal" class="modal hide fade">
+	<div class="modal-header" >
+		<a class="close" data-dismiss="modal">×</a>
+		<h3>邮件订阅请填写：</h3>
+	</div>
+	<div class="modal-body">
+		<form action="/blog/subscriber/add/" method="post" id="subscribeform"><div style='display:none;'><input type='hidden'  name='csrfmiddlewaretoken' value='affc5b2a78d3ca5ea725d9060e45735a' /></div>
+			<div>
+			    <label for="username">昵称 <span>*</span></label>
+				<input onblur="inputFocusOrBlur(this, 1, &#39;你的昵称&#39;);" name="username" maxlength="50" onfocus="inputFocusOrBlur(this, 0, &#39;你的昵称&#39;);" type="text" id="name" value="你的昵称" />
+			</div>
+            <div>
+				<label for="email_address">电子邮箱（会为你保密） <span>*</span></label>
+				<input onblur="inputFocusOrBlur(this, 1, &#39;你的邮箱&#39;);" name="email_address" maxlength="75" onfocus="inputFocusOrBlur(this, 0, &#39;你的邮箱&#39;);" type="text" id="email" value="你的邮箱" />
+			</div>
+			<input class="button" type="submit" value="提交" />
+		</form>
+	</div>
+</div>
+				<div id="resultmodal" class="modal hide fade">
+	<div class="modal-header" >
+		<a class="close" data-dismiss="modal">×</a>
+		<h3>需要提醒您：</h3>
+	</div>
+	<div class="modal-body">
+		<p>评论成功</p>
+	</div>
+	<div class="modal-footer">
+		<input class="button" type="button" value="确定" data-dismiss="modal"/>
+	</div>
+</div>
+			<!-- /main -->
+			</div>
+			<!-- sidebar -->
+<div id="sidebar">
+{% include 'blog/sidebar.html' %}
+<!-- /sidebar -->
+</div>
+			
+	    <!-- content -->
+		</div>
+	
+	<!-- /content-out -->
+	</div>
+	
+	
+		<!-- extra -->
+<div id="extra-wrap"><div id="extra" class="clearfix">
+{% include 'blog/extra.html' %}
+<!-- /extra -->
+</div></div>
+
+<!-- footer -->
+<footer>
+{% include 'blog/footer.html' %}
+<!-- /footer -->
+</footer>
+
+</body>

@@ -1,0 +1,76 @@
+	    <div class="col first">
+		    <h3>联系信息</h3>
+            <!--
+		    <p><strong>QQ： </strong>123456<br/></p>
+            -->
+		    <p><strong>Weibo: </strong><a href="{{g.user.weibo}}">新浪微博</a><br/></p>
+	        <p><strong>E-mail: </strong>{{g.user.email}}</p>
+			<p><strong>更多信息 - 请访问</strong> <a href="/blog/about/">关于作者</a></p>
+
+            <!--
+            <h3>获取更新</h3>
+            <ul class="subscribe-stuff">
+      	        <li><a title="RSS" href="/rss/" rel="nofollow">
+				<img alt="RSS" title="RSS" src="/static/blog/coolblue/images/social_rss.png" /></a>
+			    </li>
+      	        <li><a title="Renren" href="http://www.renren.com/profile.do?id=722143160" rel="nofollow">
+				<img alt="Renren" title="Renren" src="/static/blog/coolblue/images/renren.png" style="width: 48px; height: 48px;" /></a>
+			    </li>
+			    <li><a title="Weibo" href="http://t.sina.com.cn/chinekingseu" rel="nofollow">
+				<img alt="Weibo" title="Weibo" src="/static/blog/coolblue/images/WeiBo.png" /></a>
+			    </li>
+			    <li><a title="通过邮件订阅" href="#" rel="nofollow">
+				<img alt="通过邮件订阅" title="通过邮件订阅" src="/static/blog/coolblue/images/social_email.png" /></a>
+			    </li>
+            </ul>
+            <p style="width: 200px;">保持更新，通过订阅
+		    <a href="/rss/">RSS</a>, <a href="">人人</a>,
+			<a href="">新浪微博</a> or <a href="index">Email</a>
+		    </p>
+            -->
+
+	    </div>
+
+	    <div class="col">
+   	        <h3>网站链接</h3>
+		    <div class="footer-list">
+			    <ul>
+				    <li id="current"><a href="/blog">首页</a></li>
+					<li><a href="/blog/category/">分类</a></li>
+					<li><a href="/blog/contact/">留言板</a></li>
+					<li><a href="/blog/about/">关于</a></li>
+			    </ul>
+		    </div>
+            <!--
+            <h3>好友列表</h3>
+		    <div class="footer-list">
+			    <ul>
+					<li><a href="/">特雷西</a></li>
+			    </ul>
+		    </div>
+            -->
+	    </div>
+
+        <div class="col">
+            <h3>友情链接</h3>
+	        <div class="footer-list">
+			    <ul>
+                    {% for link in links %}
+				    <li><a href="{{ link.site }}" title="{{ link.name }}" target="_blank">{{ link.name }}</a></li>
+                    {% endfor %}
+			    </ul>
+		    </div>
+        </div>
+
+        <div class="col">
+            <h3>所有分类</h3>
+	        <div class="footer-list">
+			    <ul>
+                {% for category in categories %}
+				    <li><a href="/blog/category/{{ category.id }}">{{ category.name }}</a></li>
+                {% endfor %}
+			    </ul>
+		    </div>
+	    </div>
+
+

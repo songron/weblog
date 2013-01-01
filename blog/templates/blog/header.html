@@ -1,0 +1,42 @@
+ 	<hgroup>
+        <h1 id="logo-text"><a href="/blog" title=""> {{ g.user.name }}的博客</a></h1>
+		<p id="slogan">Life going... </p>
+    </hgroup>
+
+    <nav>
+        <ul>
+            <li {% if nav_current=="index" %}id="current"{% endif %}><a href="/blog">首页</a><span></span></li>
+            <li {% if nav_current=="category" %}id="current"{% endif %}><a href="/blog/category/">分类</a><span></span></li>
+            <li {% if nav_current=="contact" %}id="current"{% endif %}><a href="/blog/contact/">留言板</a><span></span></li>
+            <li {% if nav_current=="about" %}id="current"{% endif %}><a href="/blog/about/">关于</a><span></span></li>
+        </ul>
+	</nav>
+
+    <!--
+    <div class="subscribe">
+        <span>订阅:</span> <a href="#">Email</a> | <a href="/rss/">RSS</a>
+    </div>
+    -->
+
+   <form id="quick-search" method="get" action="/blog/search/">
+      <fieldset class="search">
+         <label for="q">Search:</label>
+         <input class="tbox" id="qsearch" type="text" name="q" value="Search..." title="开始输入，按回车键进行搜索" onfocus="clS(1);" onblur="clS(0);" />
+         <button class="btn" title="点击搜索">Search</button>
+      </fieldset>
+   </form>
+   
+   <script type="text/javascript"> 
+        function clS(t){
+                var srch = document.getElementById('qsearch'), val = srch.value.toString().toLowerCase(), re = /^\s+$/;
+                if(t) {
+                        if(val == 'search...' || val == 'search'){
+                                srch.value = '';
+                        }
+                } else {
+                        if(val == 'search...' || val == 'search' || val == '' || re.test(val)) {
+                                srch.value = 'Search...';
+                        }
+                }
+        }
+    </script> 

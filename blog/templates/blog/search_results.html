@@ -11,11 +11,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<meta property="wb:webmaster" content="3caf5a5b94e6991e" />
-	
+
 	<link rel="shortcut icon" href="/static/blog/coolblue/images/chine.ico"/>
-	
+
 	<title> 搜索{{keywords}} | {{g.user.name}}的博客</title>
-	
+
 	<style>
 		div#Pagination {
 			padding-left: 15px;
@@ -33,21 +33,21 @@
 	<link type="text/css" rel="stylesheet" href="/static/blog/coolblue/css/bootstrap.min.css"><link>
 	<link rel="stylesheet" type="text/css" media="screen" href="/static/blog/coolblue/css/coolblue.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="/static/blog/coolblue/css/chine.css" />
-	
+
 	<script>window.jQuery || document.write('<script src="/static/blog/coolblue/js/jquery-1.7.2.min.js"><\/script>')</script>
 	<script src="/static/blog/coolblue/js/scrollToTop.js"></script>
 	<script src="/static/blog/coolblue/js/inputFocusOrBlur.js"></script>
-	<script src="/static/blog/coolblue/js/jquery.form.js"></script> 
-	<script src="/static/blog/coolblue/js/bootstrap-transition.js"></script> 
+	<script src="/static/blog/coolblue/js/jquery.form.js"></script>
+	<script src="/static/blog/coolblue/js/bootstrap-transition.js"></script>
 	<script src="/static/blog/coolblue/js/bootstrap-tooltip.js"></script>
-	<script src="/static/blog/coolblue/js/bootstrap-modal.js"></script> 
-	<script src="/static/blog/coolblue/js/subscribe.js"></script> 
-	
+	<script src="/static/blog/coolblue/js/bootstrap-modal.js"></script>
+	<script src="/static/blog/coolblue/js/subscribe.js"></script>
+
 	<!--[if lt IE 9]>
 	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-	
+
 	<script language="JavaScript">
 		$(function(){
 			$('div#Pagination a').each(function(i) {
@@ -59,29 +59,29 @@
 
 </head>
 <body id="top">
-	
+
 		<!--header -->
 <div id="header-wrap"><header>
 {% include 'blog/header.html' %}
 <!--/header-->
 </header></div>
-	
-	
+
+
 	<!-- content-wrap -->
 	<div id="content-wrap">
-	
+
 	    <!-- content -->
 	    <div id="content" class="clearfix">
-	    	
+
 <!-- main -->
 <div id="main">
-				
+
 	<div class="post">
 		<p id="resultCount" class="highlight">
             {% if search=='search' %}共搜索到{{total}}条结果
             {% elif search=='tag' %}标签 - 【{{tag.name}}】
             {% else %}博客分类 - 【{{category.name}}】{% endif %}
-        </p> 
+        </p>
 	</div>
 	<div class="indent">
 	{% for a in articles %}
@@ -97,7 +97,7 @@
 <div id="Pagination" class="pagination">
     {% for i in pagination %}
         {% if i==pid %}
-	    <span class="current">1</span>
+        <span class="current">{{ i }}</span>
         {% else %}
 	    <a href="/page/{{i}}" >{{i}}</a>
         {% endif %}
@@ -106,7 +106,7 @@
 	<a href="/page/{{last_page}}" >末页 &raquo;</a>
 </div>
 -->
-	
+
 <!-- /main -->
 </div>
 
@@ -115,14 +115,14 @@
 {% include 'blog/sidebar.html' %}
 <!-- /sidebar -->
 </div>
-			
+
 	    <!-- content -->
 		</div>
-	
+
 	<!-- /content-out -->
 	</div>
-	
-	
+
+
 <!-- extra -->
 <div id="extra-wrap"><div id="extra" class="clearfix">
 {% include 'blog/extra.html' %}
@@ -134,5 +134,5 @@
 {% include 'blog/footer.html' %}
 <!-- /footer -->
 </footer>
-	
+
 </body>

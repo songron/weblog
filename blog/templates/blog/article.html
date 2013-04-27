@@ -138,7 +138,7 @@
 	    	<a href="#">{{ article.title }}</a>
 		</h2>
 
-        <p class="post-info"><span>位于分类</span> <a href="/blog/category/balabala/">{{ article.category.name }}</a></p>
+        <p class="post-info"><span>位于分类</span> <a href="/blog/category/{{ article.category.id }}">{{ article.category.name }}</a></p>
         {{ article.content|safe }}
 
         <!--

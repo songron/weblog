@@ -14,7 +14,7 @@ class MyModelView( ModelView ):
 
 admin = Admin(app, url='/blog/admin')
 
-admin.add_view(ModelView(Category, db.session))
+admin.add_view(MyModelView(Category, db.session))
 admin.add_view(MyModelView(Tag, db.session))
 admin.add_view(MyModelView(Article, db.session))
 admin.add_view(MyModelView(Comment, db.session))

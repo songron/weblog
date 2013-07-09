@@ -3,6 +3,8 @@ weblog
 
 个人博客。
 
+[Example: 马孔多的主页](http://makongduo.tk)
+
 Download
 --------
     $ git clone https://github.com/ghostrong/weblog.git

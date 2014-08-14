@@ -3,7 +3,7 @@ weblog
 
 个人博客。
 
-[Example: 马孔多的主页](http://makongduo.tk)
+[Example: 马孔多的主页](http://whoop.vipsinaapp.com/blog/)
 
 Download
 --------

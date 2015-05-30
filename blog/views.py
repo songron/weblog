@@ -4,52 +4,20 @@ from datetime import datetime
 import time
 import json
 from StringIO import StringIO
-from html_convert import html2text
 from werkzeug import secure_filename
-from flask import (Blueprint, request, render_template, redirect, g, url_for, abort)
-from myapp import app
-from data import *
-from blog.admin import *  #
-from blog.data_wrapper import DataWrapper
-dw = DataWrapper()
+from flask import (Blueprint, request, render_template, redirect, g, url_for,
+                   abort)
+from html2text import html2text
 
-blog = Blueprint('blog', __name__,
-    template_folder='templates',
-    )
+from . import app
+# from data import *
+# from blog.admin import *  #
+# from blog.data_wrapper import DataWrapper
+# dw = DataWrapper()
+#blog = Blueprint('blog', __name__,
+#    template_folder='templates',
+#    )
 
-# Global
-USER = {
-    'name': u'马孔多',
-    'avatar': u'http://tp4.sinaimg.cn/1990786715/180/5642425207/1',
-    'avatar_large': u'http://whoop-upload.stor.sinaapp.com/1353599241_me.jpg',
-    'email': u'rongxiaosong@gmail.com',
-    'weibo': u'http://weibo.com/rongxs',
-    'intro': u'''
-    马孔多，《百年孤独》的小镇，取这个名字并不代表我很文艺。正在读书的程序员，\
-    每天十几个小时坐在电脑前会压抑人的神经，所以酷爱户外运动，爬山最佳。此外，\
-    读书、电影也是必不可少。广招朋友，欢迎IT人士以及有各类爱好的朋友前来指教。\
-    Feel Free to Email Me: rongxiaosong@gmail.com
-    '''
-}
-#
-
-
-# filters
-
-Mons = {
-    '1':u'一',
-    '2':u'二',
-    '3':u'三',
-    '4':u'四',
-    '5':u'五',
-    '6':u'六',
-    '7':u'七',
-    '8':u'八',
-    '9':u'九',
-    '10':u'十',
-    '11':u'十一',
-    '12':u'十二'
-}
 def _timestr0(dt):
     mon = Mons[str(dt.month)]
     return u'%s月<span>%d</span>' % (mon, dt.day)
@@ -71,12 +39,10 @@ def _html2text(html):
     return text
 app.jinja_env.filters['html2text'] = _html2text
 
-# end of filters
 
-
-@blog.before_request
+@app.before_request
 def before_request():
-    g.user = USER
+    g.user = app.config['USER']
 
 
 def _global_maps():
@@ -88,8 +54,9 @@ def _global_maps():
     }
     return maps
 
-@blog.route('/')
-@blog.route('/page/<int:pid>')
+
+@app.route('/')
+@app.route('/page/<int:pid>')
 def index(pid=1):
     per_page = 10
     p = dw.get_article_by_page(pid, per_page)
@@ -111,8 +78,8 @@ def index(pid=1):
         )
 
 
-@blog.route('/category/')
-@blog.route('/category/<int:cid>')
+@app.route('/category/')
+@app.route('/category/<int:cid>')
 def category(cid=0):
     if cid != 0:
         return redirect( url_for('.search',category=cid) )
@@ -122,7 +89,7 @@ def category(cid=0):
         )
 
 
-@blog.route('/contact/')
+@app.route('/contact/')
 def contact():
     article = dw.get_article_by_id(1) #id=1, the default article
     if not article:
@@ -137,7 +104,7 @@ def contact():
         )
 
 
-@blog.route('/about/')
+@app.route('/about/')
 def about():
     return render_template('blog/about.html',
         nav_current="about",
@@ -145,7 +112,7 @@ def about():
         )
 
 
-@blog.route('/article/<int:id>')
+@app.route('/article/<int:id>')
 def article(id):
     article = dw.get_article_by_id(id)
     if not article:
@@ -159,7 +126,7 @@ def article(id):
         )
 
 
-@blog.route('/new_comment', methods=['POST'])
+@app.route('/new_comment', methods=['POST'])
 def new_comment():
     username = request.form.get('username', '')
     avatar = request.form.get('avatar', '')
@@ -216,11 +183,12 @@ def new_comment():
     return res
 
 
-@blog.route('/tag/<int:tid>')
+@app.route('/tag/<int:tid>')
 def tag(tid):
     return redirect( url_for('.search',tag=tid) )
 
-@blog.route('/search/')
+
+@app.route('/search/')
 def search():
     category_id = request.args.get('category','')
     tag_id = request.args.get('tag', '')
@@ -258,7 +226,7 @@ def search():
     )
 
 
-@blog.route('/upload', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def upload():
     f = request.files.get('imgFile', None)
     if not f:

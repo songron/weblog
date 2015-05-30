@@ -1,4 +1,0 @@
-转换单个文件
-./html2text.py [filename] > out
-批量转换
-./convert.sh [-s SRCDIR] [-d DSTDIR]

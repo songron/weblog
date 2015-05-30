@@ -9,11 +9,15 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
 
+    def __init__(self, name):
+        self.name = name
+
     def __unicode__(self):
         return self.name
 
 
-article_tags = db.Table('tags',
+# Many-to-Many Relations
+articles_to_tags = db.Table('tags',
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
     db.Column('article_id', db.Integer, db.ForeignKey('article.id')),
 )
@@ -22,6 +26,9 @@ article_tags = db.Table('tags',
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
+
+    def __init__(self, name):
+        self.name = name
 
     def __unicode__(self):
         return self.name
@@ -38,13 +45,34 @@ class Article(db.Model):
     share = db.Column(db.Integer, default=0) # share to social networks
     click_count = db.Column(db.Integer, default=0)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-    category = db.relationship('Category', backref=db.backref('articles',lazy='dynamic'), lazy='select')
+    category = db.relationship('Category',
+                               backref=db.backref('articles',lazy='dynamic'),
+                               lazy='select')
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), default=1)
     author = db.relationship('User', backref='articles', lazy='select')
-    tags = db.relationship('Tag', secondary=article_tags, backref=db.backref('articles',lazy='dynamic'))
+    tags = db.relationship('Tag', secondary=articles_to_tags,
+                           backref=db.backref('articles',lazy='dynamic'))
+
+    def __init__(self, title, content, category):
+        self.title = title
+        self.content = content
+        self.category = category
 
     def __unicode__(self):
         return self.title
+
+    def save(self, tag_list):
+        for tagname in tag_list:
+            tag = db.session.query(Tag).filter(Tag.name==tagname).first()
+            if not t:
+                tag = Tag(name=tagname)
+            self.tags.append(tag)
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    def delete(self):
+        pass
 
 
 class Comment(db.Model):
@@ -64,6 +92,9 @@ class Comment(db.Model):
 
     def __unicode__(self):
         return self.content
+
+    def save(self):
+        pass
 
 
 class User(db.Model):

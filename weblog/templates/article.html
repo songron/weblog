@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}{{ entry.title }}{% endblock %}
+{% block body %}
+  {{ entry.title|safe }}
+  <p class=date>written on {{ format_date_weekday(entry.pub_time) }}
+
+  {{ entry.content|safe }}
+
+  <p class=tags>This entry was tagged
+  {% for tag in entry.tags %}
+    {%- if not loop.first and not loop.last %}, {% endif -%}
+    {%- if loop.last and not loop.first %} and {% endif %}
+    <a href="/tag/{{ tag.id }}">{{ tag.name }}</a>
+  {%- endfor %}
+
+{% endblock %}

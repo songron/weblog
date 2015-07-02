@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}Entries tagged “{{ tag.name }}”{% endblock %}
+{% block body %}
+  <h1>Entries <a href="">tagged</a> “{{ tag.name }}”</h1>
+  <ul>
+  {%- for entry in entries %}
+    <li>
+        <a href="">{{ entry.title }}</a>
+        written on {{ format_date(entry.pub_time) }}
+    </li>
+  {%- endfor %}
+  </ul>
+{% endblock %}

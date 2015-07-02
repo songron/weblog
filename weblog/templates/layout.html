@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  {% block htmlhead %}
+    <title>{% block title %}Home{% endblock %} | Rong's Thoughts and Writings</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+  {% endblock %}
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/about">Rong</a>'s Thoughts and Writings
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/">blog</a>
+          <li><a href="/tags">tags</a>
+          <li><a href="/about">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        {% block body %}{% endblock %}
+
+        <!--
+        <div class=adspace>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-6757320953560275"
+               data-ad-slot="8324866143"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        -->
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2015 by Xiaosong Rong.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+          Contact me via <a href="mailto:rongxiaosong@gmail.com">mail</a>,
+          <a href="http://weibo.com/rongxs" target="_blank">weibo</a>,
+          or
+          <a href="http://github.com/ghostrong" target="_blank">github</a>
+        <p>
+        <a>Subscribe</a> this blog.
+      </div>
+    </div>
+  </body>
+</html>

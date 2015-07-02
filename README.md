@@ -12,10 +12,15 @@ Quick Start
 
 TBD
 
-Admin System
-------------------
 
-TBD
+Features
+--------
+* Markdown
+* Tags
+* Search (TBD)
 
 
-
+TODO
+----
+* Markdown File Submitter
+* Search

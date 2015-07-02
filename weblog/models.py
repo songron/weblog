@@ -48,7 +48,7 @@ class Tag(db.Model):
         return self
 
 
-def get_tag(name):
+def _get_tag(name):
     tag = db.session.query(Tag).filter(Tag.name==name).first()
     if not tag:
         tag = Tag(name)
@@ -59,7 +59,7 @@ def get_tag(name):
 def create_article(title, content, pub_time=None, tagnames=[]):
     article = Article(title, content, pub_time)
     for tagname in tagnames:
-        tag = get_tag(tagname)
+        tag = _get_tag(tagname)
         article.tags.append(tag)
     article.save()
     return article

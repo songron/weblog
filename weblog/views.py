@@ -1,14 +1,10 @@
 #coding=utf8
 
-from flask import render_template
+import json
+from flask import render_template, request, abort
 from . import app
-from .models import (
-    Article,
-    Tag,
-    get_tag,
-    create_article
-)
-from .utils import markdown2html, load_aboutme
+from .models import (Article, Tag, create_article)
+from .utils import markdown2html, load_content
 
 
 @app.route('/')
@@ -41,6 +37,28 @@ def show_tag(id):
 
 @app.route('/about')
 def about():
-    content = load_aboutme()
+    content = load_content('about')
     return render_template('about.html',
                            content=content)
+
+
+@app.route('/links')
+def links():
+    content = load_content('links')
+    return render_template('links.html',
+                           content=content)
+
+
+@app.route('/publish', methods=['POST'])
+def publish():
+    title = request.form.get('title', None)
+    if not title:
+        return 'No title found', 500
+    content = request.form.get('content', None)
+    if not content:
+        return 'No content found', 500
+    pub_time = request.form.get('pub_time', None)
+    tags = request.form.getlist('tags')
+
+    create_article(title, content, pub_time, tags)
+    return '', 200

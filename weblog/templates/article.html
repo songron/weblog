@@ -3,6 +3,7 @@
 {% block body %}
   {{ entry.title|safe }}
   <p class=date>written on {{ format_date_weekday(entry.pub_time) }}
+  <br>
 
   {{ entry.content|safe }}
 

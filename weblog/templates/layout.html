@@ -3,19 +3,20 @@
   <head>
     <meta charset=utf-8>
   {% block htmlhead %}
-    <title>{% block title %}Home{% endblock %} | Rong's Thoughts and Writings</title>
+  <title>{% block title %}Home{% endblock %} | {{ config.AUTHOR }}'s Thoughts and Writings</title>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
   {% endblock %}
   </head>
   <body>
     <div class=container>
       <div class=header>
-        <a href="/about">Rong</a>'s Thoughts and Writings
+          <a href="/about">{{ config.AUTHOR }}</a>'s Thoughts and Writings
       </div>
       <div class=navigation>
         <ul>
           <li><a href="/">blog</a>
           <li><a href="/tags">tags</a>
+          <li><a href="/links">links</a>
           <li><a href="/about">about</a>
         </ul>
       </div>
@@ -36,7 +37,7 @@
         -->
       </div>
       <div class=footer>
-        <p>&copy; Copyright 2015 by Xiaosong Rong.
+        <p>&copy; Copyright 2015 by Rong.
         <p>
           Content licensed under the Creative Commons
           attribution-noncommercial-sharealike License.

@@ -37,10 +37,12 @@ def publish(stream, api):
 
     headers = []
     for line in stream:
-        line = line.rstrip()
         if not line:
             break
+        line = line.rstrip()
         headers.append(line)
+        if line == '...':
+            break
 
     cfg = yaml.load(StringIO('\n'.join(headers)))
     if not cfg:

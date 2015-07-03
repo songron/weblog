@@ -117,15 +117,20 @@ We provide a simple script to make the publishing work easy. Run `publish.py` to
 ````
 $ python publish
 
-usage: publish.py [-h] [-p PATH] [-a API]
+usage: publish.py [-h] [-p PATH] [-a API] [-t TOKEN]
 
 optional arguments:
   -h, --help            show this help message and exit
   -p PATH, --path PATH  markdown file path/url
   -a API, --api API     api address
+  -t TOKEN, --token TOKEN
+                        access token
 ````
 
-You should provide the markdown file(either file-path or raw-url) and the target api where to submit it. In this blog system, the publish url is `/publish`. After starting the web server locally, you can publish an article like this:
+You should provide the markdown file(either file-path or raw-url), the target api, and the access token. In this blog system, the publish url is `/publish`. The access token is the value of *TOKEN* in [config.py](config.py). 
+**Anyone who know the token could publish articles to your blog system, so keep it secret!!**
+
+After starting the web server locally, you can publish an article like this:
 
 ````
 $ python publish.py -a http://127.0.0.1:8888/publish -p example.md

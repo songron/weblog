@@ -5,8 +5,8 @@
   <ul>
   {%- for entry in entries %}
     <li>
-        <a href="">{{ entry.title }}</a>
-        written on {{ format_date(entry.pub_time) }}
+      <a href="/article/{{ entry.id }}">{{ entry.title }}</a>
+      written on {{ format_date(entry.pub_time) }}
     </li>
   {%- endfor %}
   </ul>

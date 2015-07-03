@@ -12,7 +12,9 @@ a:hover { color: #2771b5; }
 
 /* headlines */
 h1, h2, h3, h4, h5, h6      { font-family: 'Crimson Text', serif;
-                              font-weight: 400; color: #2771b5; font-style: italic }
+                              font-weight: 400; color: #2771b5;
+                              font-style: italic;
+                            }
 h1 a, h2 a, h3 a, h4 a,
 h5 a, h6 a                  { text-decoration: none; }
 h1 a:hover, h2 a:hover,

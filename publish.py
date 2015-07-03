@@ -9,16 +9,27 @@ in markdown.
 import argparse
 import json
 from StringIO import StringIO
+import re
 import requests
 import yaml
+import markdown
+from lxml import html
 
 
-def get_file(path):
+def _get_file(path):
     if (path.startswith('http://') or path.startswith('https://') or
         path.startswith('ftp://')):
         r = requests.get(path)
         return StringIO(r.content)
     return open(path)
+
+
+def _gen_summary(mdtext, n=120):
+    htmltext = markdown.markdown(mdtext)
+    tree = html.fromstring(htmltext)
+    node = tree.xpath('.')[0]
+    text = re.sub(ur'\s+', ' ', node.text_content()).strip()
+    return text[:n] + ' ...'
 
 
 def publish(stream, api):
@@ -48,7 +59,7 @@ def publish(stream, api):
 
     data = {
         'title': cfg['title'],
-        'summary': cfg.get('summary', None) or cfg['title'],
+        'summary': cfg.get('summary', None) or _gen_summary(content),
         'content': content,
     }
     if 'tags' in cfg:
@@ -70,7 +81,7 @@ def main():
         parser.print_help()
         return
 
-    stream = get_file(args.path)
+    stream = _get_file(args.path)
     publish(stream, args.api)
 
 

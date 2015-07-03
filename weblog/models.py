@@ -42,7 +42,7 @@ class Tag(db.Model):
     name = db.Column(db.String(50), unique=True)
 
     def __init__(self, name):
-        self.name = name
+        self.name = name.lower()
 
     def save(self):
         db.session.add(self)

@@ -2,7 +2,7 @@
 
 from datetime import datetime
 import json
-from flask import render_template, request
+from flask import render_template, request, abort
 from . import app
 from .models import (Article, Tag, create_article)
 from .utils import markdown2html, load_content
@@ -73,8 +73,11 @@ def links():
                            content=content)
 
 
-@app.route('/publish', methods=['POST'])
+@app.route('/publish', methods=['GET', 'POST'])
 def publish():
+    if request.method == 'GET':
+        abort(404)
+
     # authorization
     token = request.form.get('token', '')
     if token != app.config['TOKEN']:

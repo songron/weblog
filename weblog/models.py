@@ -51,6 +51,7 @@ class Tag(db.Model):
 
 
 def _get_tag(name):
+    name = name.lower()
     tag = db.session.query(Tag).filter(Tag.name==name).first()
     if not tag:
         tag = Tag(name)
@@ -61,7 +62,7 @@ def _get_tag(name):
 def create_article(title, summary, content, pub_time=None, tagnames=[]):
     article = Article(title, summary, content, pub_time)
     for tagname in tagnames:
-        tag = _get_tag(tagname)
+        tag = _get_tag(tagname.lower())
         article.tags.append(tag)
     article.save()
     return article

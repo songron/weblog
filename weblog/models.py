@@ -15,14 +15,16 @@ class Article(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
+    summary = db.Column(db.String(300))
     content = db.Column(db.Text)
     pub_time = db.Column(db.DateTime, default=datetime.now)
     tags = db.relationship('Tag',
                            secondary=articles_tags,
                            backref=db.backref('articles', lazy='dynamic'))
 
-    def __init__(self, title, content, pub_time=None):
+    def __init__(self, title, summary, content, pub_time=None):
         self.title = title
+        self.summary = summary
         self.content = content
         if pub_time:
             self.pub_time = pub_time
@@ -56,8 +58,8 @@ def _get_tag(name):
     return tag
 
 
-def create_article(title, content, pub_time=None, tagnames=[]):
-    article = Article(title, content, pub_time)
+def create_article(title, summary, content, pub_time=None, tagnames=[]):
+    article = Article(title, summary, content, pub_time)
     for tagname in tagnames:
         tag = _get_tag(tagname)
         article.tags.append(tag)

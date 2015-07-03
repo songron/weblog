@@ -49,6 +49,8 @@ dd                              { margin: 16px 0 25px 40px; padding: 0; }
 ul ol, ol ul, ul ul, ol ol      { margin: 10px 0; padding: 0 0 0 40px; }
 li                              { padding: 0; }
 h1 + p.date                     { margin-top: -25px; font-style: italic; }
+p.page-date                     { text-align: right; font-style: italic; margin-top: 30px; }
+p.page-tags                     { text-align: right; font-style: italic; }
 blockquote                      { font-style: italic; }
 
 /* code formatting.  no monospace because of webkit (bug?) */

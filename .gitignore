@@ -1,4 +1,3 @@
 *.pyc
 ENV/
-test.py
-test.md
+temp/

@@ -22,5 +22,4 @@ Features
 
 TODO
 ----
-* Markdown File Submitter
 * Search

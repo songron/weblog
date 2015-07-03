@@ -13,31 +13,38 @@ import requests
 import yaml
 
 
-def publish(filename, api):
-    """ Publishing a new article from `filename`"""
+def get_file(path):
+    if (path.startswith('http://') or path.startswith('https://') or
+        path.startswith('ftp://')):
+        r = requests.get(path)
+        return StringIO(r.content)
+    return open(path)
 
-    with open(filename) as f:
-        headers = []
-        for line in f:
-            line = line.rstrip()
-            if not line:
-                break
-            headers.append(line)
 
-        cfg = yaml.load(StringIO('\n'.join(headers)))
-        if not cfg:
-            raise ValueError('no valid yaml config informations')
-        if 'title' not in cfg:
-            raise ValueError('no title found')
-        if 'tags' in cfg and not isinstance(cfg['tags'], list):
-            raise ValueError('invalid tags: it should be list')
+def publish(stream, api):
+    """ Publishing a new article from `stream`"""
 
-        bodies = []
-        for line in f:
-            bodies.append(line.rstrip())
-        content = '\n'.join(bodies).strip().decode('utf8')
-        if not content:
-            raise ValueError('no content found')
+    headers = []
+    for line in stream:
+        line = line.rstrip()
+        if not line:
+            break
+        headers.append(line)
+
+    cfg = yaml.load(StringIO('\n'.join(headers)))
+    if not cfg:
+        raise ValueError('no valid yaml config informations')
+    if 'title' not in cfg:
+        raise ValueError('no title found')
+    if 'tags' in cfg and not isinstance(cfg['tags'], list):
+        raise ValueError('invalid tags: it should be list')
+
+    bodies = []
+    for line in stream:
+        bodies.append(line.rstrip())
+    content = '\n'.join(bodies).strip().decode('utf8')
+    if not content:
+        raise ValueError('no content found')
 
     data = {
         'title': cfg['title'],
@@ -55,15 +62,16 @@ def publish(filename, api):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--file', help='markdown file path')
+    parser.add_argument('-p', '--path', help='markdown file path/url')
     parser.add_argument('-a', '--api', help='api address')
     args = parser.parse_args()
 
-    if not args.file or not args.api:
+    if not args.path or not args.api:
         parser.print_help()
         return
 
-    publish(args.file, args.api)
+    stream = get_file(args.path)
+    publish(stream, args.api)
 
 
 if __name__ == '__main__':

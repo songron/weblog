@@ -30,5 +30,5 @@ def markdown2html(mdtext):
 
 def load_content(name):
     with open('{}.md'.format(name)) as f:
-        mdtext = f.read()
+        mdtext = f.read().decode('utf8', 'ignore')
     return markdown2html(mdtext)

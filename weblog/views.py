@@ -75,19 +75,28 @@ def links():
 
 @app.route('/publish', methods=['POST'])
 def publish():
+    # authorization
+    token = request.form.get('token', '')
+    if token != app.config['TOKEN']:
+        return 'invalid access token', 500
+
     title = request.form.get('title', None)
     if not title:
-        return 'No title found', 500
+        return 'no title found', 500
+
     summary = request.form.get('summary', None)
     if not summary:
-        return 'No summary found', 500
+        return 'no summary found', 500
+
     content = request.form.get('content', None)
     if not content:
-        return 'No content found', 500
+        return 'no content found', 500
     content = markdown2html(content)
+
     pub_time = request.form.get('pub_time', None)
     if pub_time:
         pub_time = datetime.strptime(pub_time, app.config['TIME_FORMAT'])
+
     tags = request.form.getlist('tags')
 
     create_article(title, summary, content, pub_time, tags)

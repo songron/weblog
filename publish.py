@@ -32,7 +32,7 @@ def _gen_summary(mdtext, n=120):
     return text[:n] + ' ...'
 
 
-def publish(stream, api):
+def publish(stream, api, token):
     """ Publishing a new article from `stream`"""
 
     headers = []
@@ -60,6 +60,7 @@ def publish(stream, api):
         raise ValueError('no content found')
 
     data = {
+        'token': token,
         'title': cfg['title'],
         'summary': cfg.get('summary', None) or _gen_summary(content),
         'content': content,
@@ -77,14 +78,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--path', help='markdown file path/url')
     parser.add_argument('-a', '--api', help='api address')
+    parser.add_argument('-t', '--token', help='access token')
     args = parser.parse_args()
 
-    if not args.path or not args.api:
+    if not args.path or not args.api or not args.token:
         parser.print_help()
         return
 
     stream = _get_file(args.path)
-    publish(stream, args.api)
+    publish(stream, args.api, args.token)
 
 
 if __name__ == '__main__':

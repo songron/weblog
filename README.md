@@ -1,4 +1,4 @@
-WeBlog
+eBlog
 ======
 
 A simple blog system based on [Flask](http://flask.pocoo.org/)
@@ -11,6 +11,7 @@ Quick Start
 $ git clone https://github.com/ghostrong/weblog.git
 $ cd weblog
 $ pip install -r requirements.txt
+$ python create_db.py
 $ python run.py
 ````
 
@@ -131,9 +132,10 @@ You should provide the markdown file(either file-path or raw-url), the target ap
 **Anyone who know the token could publish articles to your blog system, so keep it secret!!**
 
 After starting the web server locally, you can publish an article like this:
+*You should be change your token in config.py file.
 
 ````
-$ python publish.py -a http://127.0.0.1:8888/publish -p example.md
+$ python publish.py -a http://127.0.0.1:8888/publish -p example.md -t your_token_in_config
 ````
 
 

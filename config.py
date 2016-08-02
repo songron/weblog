@@ -2,7 +2,7 @@
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
 
-AUTHOR = ' 大数据之路'
+AUTHOR = '51ETL'
 
 # this is useful for submitting markdow files
 # when publish new articles

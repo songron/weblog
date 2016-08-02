@@ -1,16 +1,8 @@
 About Me
 ========
 
-My name is Xiaosong Rong. I am interested in search engine, data mining, crawler, web development, and many other topics. I am now living in Beijing, China. I just graduated from Peking University.
-
-If you want to know more about me, you can reach me by:
-
-* [email](mailto:rongxiaosong@gmail.com)
-* [github](https://github.com/ghostrong/)
-* [linkedin](https://cn.linkedin.com/pub/xiaosong-rong/45/34/9b5)
-* [weibo](weibo.com/rongxs)
-
-By the way, the nicknames I used include **cedar**, **cedarrong**, **ghostrong**, **马孔多**, and **Rong**  :-)
+  诛胖土豆  
+  whbjob    
 
 
 About this Website

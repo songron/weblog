@@ -6,7 +6,7 @@
 
 /* general style */
 body    { font: 17px/25px 'Merriweather', serif;
-          margin: 0; padding: 0; font-weight: 400; color: black; }
+          margin: 0; padding: 0; font-weight: 400; color: black;width: 400px }
 a       { color: #398ad5; font-weight: 400; }
 a:hover { color: #2771b5; }
 

@@ -1,8 +1,7 @@
 About Me
 ========
 
-  诛胖土豆  
-  whbjob    
+  ToddWang
 
 
 About this Website

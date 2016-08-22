@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block title %}{{ entry.title }}{% endblock %}
 {% block body %}
+
   {{ entry.title|safe }}
   <p class=date>written on {{ format_date_weekday(entry.pub_time) }}
   <br>

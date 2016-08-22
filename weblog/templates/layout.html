@@ -3,12 +3,13 @@
   <head>
     <meta charset=utf-8>
     <link rel="shortcut icon" href="/static/favicon.ico">
+
   {% block htmlhead %}
   <title>{% block title %}Home{% endblock %} | {{ config.AUTHOR }}</title>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
   {% endblock %}
   </head>
-  <body text-align:center>
+  <body>
     <script type="text/javascript">
     window._pt_lt = new Date().getTime();
     window._pt_sp_2 = [];
@@ -19,14 +20,14 @@
         atag.src = _protocol + 'js.ptengine.cn/pta.js';
         var stag = document.createElement('script'); stag.type = 'text/javascript'; stag.async = true;
         stag.src = _protocol + 'js.ptengine.cn/pts.js';
-        var s = document.getElementsByTagName('script')[0]; 
+        var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(atag, s); s.parentNode.insertBefore(stag, s);
     })();
 </script>
 
     <div class=container>
       <div class=header>
-          <a href="/about">{{ config.AUTHOR }}</a>
+          <a href="/">{{ config.AUTHOR }}</a>
       </div>
       <div class=navigation>
         <ul>

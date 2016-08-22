@@ -36,7 +36,7 @@ div.navigation              { float: right; }
 div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
 div.navigation ul           { margin: 0; padding: 0; list-style: none; }
 div.navigation ul li        { display: inline; margin: 0 2px; padding: 0; }
-div.body                    { clear: both; margin: 0 30px; line-height: 1.6;width:480px }
+div.body                    { clear: both; margin: 0 30px; line-height: 1.6;}
 div.footer                  { margin-top: 55px; font-size: 16px;
                               text-align: right; color: #7b8894; }
 div.footer p                { margin: 0; }
@@ -60,6 +60,7 @@ pre, code, tt   { font-family: 'Ubuntu Mono', 'Consolas', 'Deja Vu Sans Mono',
                   font-size: 0.9em; }
 pre             { line-height: 1.45; background: none; padding: 0; }
 code, tt        { background: #eee; }
+
 
 /* tables */
 table           { border: 1px solid #ddd; border-collapse: collapse;
@@ -90,6 +91,7 @@ div.entry-overview div.detail       { margin-left: 140px; }
 div.entry-overview div.date         { float: left; width: 120px; color: #7b8894;
                                       text-align: right; font-style: italic;
                                       font-size: 14px; }
+
 
 /* other alignment things */
 img.align-center        { margin: 15px auto; display: block; }

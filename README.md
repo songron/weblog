@@ -15,7 +15,7 @@ $ python create_db.py
 $ python run.py
 ````
 
-Now, visit `http://127.0.0.1:8888` in a browser.
+Now, visit `http://127.0.0.1:5000` in a browser.
 
 Requirements
 ------------
@@ -135,10 +135,18 @@ After starting the web server locally, you can publish an article like this:
 *You should be change your token in config.py file.
 
 ````
-$ python publish.py -a http://127.0.0.1:8888/publish -p example.md -t your_token_in_config
+$ python publish.py -a http://127.0.0.1:5000/publish -p example.md -t your_token_in_config
 ````
 
-
+Delete blogs
+------------
+```
+from weblog import database,models
+db = database.db
+articles=models.Article
+articles.query.filter_by(id=1).delete()
+db.session.commit()
+```
 Features
 --------
 * Writing blogs in Markdown and YAML

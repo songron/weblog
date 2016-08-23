@@ -146,6 +146,10 @@ After starting the web server locally, you can publish an article like this:
 $ python publish.py -a http://127.0.0.1:5000/publish -p example.md -t your_token_in_config
 ````
 
+Deploy application
+------------------
+gunicorn -w 4 -b 0.0.0.0:5000 run:app
+
 Delete blogs
 ------------
 ```

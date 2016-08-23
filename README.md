@@ -12,10 +12,18 @@ $ git clone https://github.com/ghostrong/weblog.git
 $ cd weblog
 $ pip install -r requirements.txt
 $ python create_db.py
-$ python run.py
+$ python run.py (also you can run shell with: sh start.sh)
 ````
 
 Now, visit `http://127.0.0.1:5000` in a browser.
+
+Database with MySQL
+-------------------
+If you use MySQL ,create weblog database before ```python create_db.py```:
+
+* Set **SQLALCHEMY_DATABASE_URI** in config.py
+* Login MySQL and execute script ```create schema weblog charset utf8;```
+* python create_db.py
 
 Requirements
 ------------

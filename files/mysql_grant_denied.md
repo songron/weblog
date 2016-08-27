@@ -14,7 +14,7 @@ MySQL upgrade from 5.1 to 5.5 by mysql_upgrade, the mysql.user.password column i
 If your MySQL version > 5.5.50, verify the authentication_string for users.
 
 ```
-UPDATE mysql.user SET authentication_string=PASSWORD('todo2TODO') where USER='root';
+UPDATE mysql.user SET authentication_string=PASSWORD('******') where USER='root';
 ```
 
 restart mysql service by:

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Eblog by whbjob</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Eblog</h1>
+      <h2 class="project-tagline">The easiest blog program with python.</h2>
+      <a href="https://github.com/whbjob/eblog" class="btn">View on GitHub</a>
+      <a href="https://github.com/whbjob/eblog/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/whbjob/eblog/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="eblog" class="anchor" href="#eblog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>eBlog</h1>
+
+<p>A simple blog system based on <a href="http://flask.pocoo.org/">Flask</a></p>
+
+<h2>
+<a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Quick Start</h2>
+
+<pre><code>$ git clone https://github.com/ghostrong/weblog.git
+$ cd weblog
+$ pip install -r requirements.txt
+$ python create_db.py
+$ python run.py (also you can run shell with: sh start.sh)
+</code></pre>
+
+<p>Now, visit <code>http://127.0.0.1:5000</code> in a browser.</p>
+
+<h2>
+<a id="database-with-mysql" class="anchor" href="#database-with-mysql" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Database with MySQL</h2>
+
+<p>If you use MySQL ,create weblog database before <code>python create_db.py</code>:</p>
+
+<ul>
+<li>Set <strong>SQLALCHEMY_DATABASE_URI</strong> in config.py</li>
+<li>Login MySQL and execute script <code>create schema weblog charset utf8;</code>
+</li>
+<li>python create_db.py</li>
+</ul>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<h4>
+<a id="for-the-server-side" class="anchor" href="#for-the-server-side" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>For the server-side</h4>
+
+<ul>
+<li>Flask</li>
+<li>Flask-SQLAlchemy</li>
+<li>itsdangerous</li>
+<li>Jinja2</li>
+<li>Markdown</li>
+<li>MarkupSafe</li>
+<li>SQLAlchemy</li>
+<li>Werkzeug</li>
+</ul>
+
+<h4>
+<a id="for-the-cline-side-for-publishing-articles-automatically" class="anchor" href="#for-the-cline-side-for-publishing-articles-automatically" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>For the cline-side (for publishing articles automatically)</h4>
+
+<ul>
+<li>requests</li>
+<li>lxml</li>
+<li>PyYAML</li>
+<li>Markdown</li>
+</ul>
+
+<h2>
+<a id="writing-blogs" class="anchor" href="#writing-blogs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Writing blogs</h2>
+
+<p>You should write articles in <a href="http://daringfireball.net/projects/markdown/">markdown</a>, and provide the meta information such as title, tags in <a href="http://yaml.org/">YAML</a>. You should put the meta data in the header lines of the markdown file. Here is an <a href="https://raw.githubusercontent.com/ghostrong/weblog/master/example.md">example</a>.</p>
+
+<h4>
+<a id="meta-data" class="anchor" href="#meta-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Meta Data</h4>
+
+<ul>
+<li>
+<p><strong>title</strong></p>
+
+<p>You must give the title the the blog. e.g.,</p>
+
+<pre><code>title: The Zen of Python
+</code></pre>
+</li>
+<li>
+<p><strong>summary</strong> (optional)</p>
+
+<p>It's the abstract of the article. If you ignore it, the publish helper will generate the
+summary snippet from the body automatically. e.g.,</p>
+
+<pre><code>summary:
+  Long time Pythoneer Tim Peters succinctly channels the BDFL's
+  guiding principles for Python's design into 20 aphorisms, only 19
+  of which have been written down.
+</code></pre>
+</li>
+<li>
+<p><strong>pub_time</strong> (optional)</p>
+
+<p>You can define the publish datetime manually. Or, the system will assign the current
+datetime. The default format is "%Y-%m-%d %H:%M:%S" (such as "2015-06-06 12:40:10").
+You could define the time string format by the value of <em>TIME_FORMAT</em> in
+<a href="config.py">config.py</a>,
+and you should conform to the
+<a href="https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior">format codes</a>. e.g.,</p>
+
+<pre><code>pub_time: 2015-06-06 12:40:10
+</code></pre>
+</li>
+<li>
+<p><strong>tags</strong> (optional)</p>
+
+<p>It's useful to assign tags to an article. The value type should be list in YAML. e.g.,</p>
+
+<pre><code>tags:
+  - python
+  - programming
+</code></pre>
+</li>
+</ul>
+
+<h4>
+<a id="the-boundry-of-meta" class="anchor" href="#the-boundry-of-meta" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The boundry of meta</h4>
+
+<p>The meta data should be located between '---' and '...'.
+The following is an example of meta infomration:</p>
+
+<pre><code>---
+title: The Zen of Python
+summary:
+  Long time Pythoneer Tim Peters succinctly channels the BDFL's
+  guiding principles for Python's design into 20 aphorisms, only 19
+  of which have been written down.
+tags:
+  - python
+  - programming
+...
+
+You should write the body content from here...
+</code></pre>
+
+<h2>
+<a id="publishing-blogs" class="anchor" href="#publishing-blogs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Publishing blogs</h2>
+
+<p>We provide a simple script to make the publishing work easy. Run <code>publish.py</code> to check the help message.</p>
+
+<pre><code>$ python publish
+
+usage: publish.py [-h] [-p PATH] [-a API] [-t TOKEN]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PATH, --path PATH  markdown file path/url
+  -a API, --api API     api address
+  -t TOKEN, --token TOKEN
+                        access token
+</code></pre>
+
+<p>You should provide the markdown file(either file-path or raw-url), the target api, and the access token. In this blog system, the publish url is <code>/publish</code>. The access token is the value of <em>TOKEN</em> in <a href="config.py">config.py</a>. 
+<strong>Anyone who know the token could publish articles to your blog system, so keep it secret!!</strong></p>
+
+<p>After starting the web server locally, you can publish an article like this:
+*You should be change your token in config.py file.</p>
+
+<pre><code>$ python publish.py -a http://127.0.0.1:5000/publish -p example.md -t your_token_in_config
+</code></pre>
+
+<h2>
+<a id="deploy-application" class="anchor" href="#deploy-application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deploy application</h2>
+
+<p>gunicorn -w 4 -b 0.0.0.0:5000 run:app</p>
+
+<h2>
+<a id="delete-blogs" class="anchor" href="#delete-blogs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Delete blogs</h2>
+
+<pre><code>from weblog import database,models
+db = database.db
+articles=models.Article
+articles.query.filter_by(id=1).delete()
+db.session.commit()
+</code></pre>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Writing blogs in Markdown and YAML</li>
+<li>Browsing blogs by PAGE or TAG</li>
+<li>Neat templates :-)</li>
+<li>Search (TBD)</li>
+</ul>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>Keyword-based Search</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/whbjob/eblog">Eblog</a> is maintained by <a href="https://github.com/whbjob">whbjob</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>

@@ -33,6 +33,11 @@ def index():
                            pagination=pagination)
 
 
+@app.route('/google08933a1ce7a7b739.html')
+def index():
+    return render_template('google08933a1ce7a7b739.html')
+
+
 @app.route('/article/<id>')
 def show_article(id):
     article = Article.query.get_or_404(id)

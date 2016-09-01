@@ -30,10 +30,10 @@ h1 em                       { color: black; font-size: 32px; display: block;
                               margin-left: 10%; margin-top: -15px; }
 
 /* layout elements */
-div.container               { max-width: 880px; margin: 10% auto; padding: 0 40px;width: 100% }
+div.container               { max-width: 880px; margin: 2.5% auto; padding: 0 40px;width: 100% }
 div.header                  { float: none; }
 div.navigation              { float: right; }
-div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
+div.header, div.navigation  { height: 25px; margin-bottom: 12px; }
 div.navigation ul           { margin: 0; padding: 0; list-style: none; }
 div.navigation ul li        { display: inline; margin: 0 2px; padding: 0; }
 div.body                    { clear: both; margin: 0 0px; line-height: 1.6;}

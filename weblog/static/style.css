@@ -27,16 +27,16 @@ h2                          { font-size: 42px; line-height: 44px; }
 h3                          { font-size: 36px; line-height: 38px; }
 
 h1 em                       { color: black; font-size: 32px; display: block;
-                              margin-left: 25px; margin-top: -15px; }
+                              margin-left: 10%; margin-top: -15px; }
 
 /* layout elements */
-div.container               { max-width: 880px; margin: 48px auto; padding: 0 40px; }
-div.header                  { float: left; }
+div.container               { max-width: 880px; margin: 10% auto; padding: 0 40px;width: 100% }
+div.header                  { float: none; }
 div.navigation              { float: right; }
 div.header, div.navigation  { height: 25px; margin-bottom: 42px; }
 div.navigation ul           { margin: 0; padding: 0; list-style: none; }
 div.navigation ul li        { display: inline; margin: 0 2px; padding: 0; }
-div.body                    { clear: both; margin: 0 30px; line-height: 1.6;}
+div.body                    { clear: both; margin: 0 0px; line-height: 1.6;}
 div.footer                  { margin-top: 55px; font-size: 16px;
                               text-align: right; color: #7b8894; }
 div.footer p                { margin: 0; }
@@ -87,9 +87,9 @@ div.entry-overview h1 a             { color: #2771b5; }
 div.entry-overview div.summary,
 div.entry-overview div.date,
 div.entry-overview div.summary p    { margin: 0; padding: 0; }
-div.entry-overview div.detail       { margin-left: 140px; }
-div.entry-overview div.date         { float: left; width: 120px; color: #7b8894;
-                                      text-align: right; font-style: italic;
+div.entry-overview div.detail       { margin-left: 20px; }
+div.entry-overview div.date         { float: none; width: 120px; color: #7b8894;
+                                      text-align: left; font-style: italic;
                                       font-size: 14px; }
 
 

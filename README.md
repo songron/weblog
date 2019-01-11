@@ -3,6 +3,9 @@ WeBlog
 
 A simple blog system based on [Flask](http://flask.pocoo.org/)
 
+[初心阅读](https://www.bemind.site/)
+[Vinyl World](https://www.vinylworld.org/)
+
 
 Quick Start
 -----------

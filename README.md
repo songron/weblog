@@ -3,9 +3,14 @@ WeBlog
 
 A simple blog system based on [Flask](http://flask.pocoo.org/)
 
-[初心阅读](https://www.bemind.site/)
+其他网站推荐 Recommendations
+=====
 
-[Vinyl World](https://www.vinylworld.org/)
+[木兰词](https://www.mulanci.org/)：中文歌词网站
+
+[初心阅读](https://www.bemind.site/)： 中文短篇阅读推荐
+
+[Vinyl World](https://www.vinylworld.org/)： 关于黑胶唱片、唱片店的爱好者网站
 
 
 Quick Start

@@ -20,6 +20,7 @@ Quick Start
 $ git clone https://github.com/ghostrong/weblog.git
 $ cd weblog
 $ pip install -r requirements.txt
+$ python create_db.py
 $ python run.py
 ````
 

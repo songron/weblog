@@ -1,16 +1,20 @@
 About Me
 ========
+提供专业 *BI* 解决方案。
 
-My name is Xiaosong Rong. I am interested in search engine, data mining, crawler, web development, and many other topics. I am now living in Beijing, China. I just graduated from Peking University.
+团队编制不足能否做 BI 系统? 能!
 
-If you want to know more about me, you can reach me by:
+没有服务器集群能否建立仓库? 能! 至少单机几十 TB 没问题!
 
-* [email](mailto:rongxiaosong@gmail.com)
-* [github](https://github.com/ghostrong/)
-* [linkedin](https://cn.linkedin.com/pub/xiaosong-rong/45/34/9b5)
-* [weibo](weibo.com/rongxs)
+技术积累不足能否开展 BI 项目? 能!
 
-By the way, the nicknames I used include **cedar**, **cedarrong**, **ghostrong**, **马孔多**, and **Rong**  :-)
+项目中有数千个 ETL 需要整合, 能否只用一两个人完成? 能!
+
+跑跑卡丁车的数仓方案就是例证: 成千上万的 ETL、每日数千个计算任务、600+报表输出、单表承载数十亿容量,加上完整的分析系统输出!
+
+* Wechat: todouwang
+* Email: 13585697921@163.com
+* [微信二维码](static/wechat_card.jpg)
 
 
 About this Website

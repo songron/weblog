@@ -1,4 +1,4 @@
-WeBlog
+eBlog
 ======
 
 A simple blog system based on [Flask](http://flask.pocoo.org/)
@@ -20,10 +20,19 @@ Quick Start
 $ git clone https://github.com/ghostrong/weblog.git
 $ cd weblog
 $ pip install -r requirements.txt
-$ python run.py
+$ python create_db.py
+$ python run.py (also you can run shell with: sh start.sh)
 ````
 
-Now, visit `http://127.0.0.1:8888` in a browser.
+Now, visit `http://127.0.0.1:5000` in a browser.
+
+Database with MySQL
+-------------------
+If you use MySQL ,create weblog database before ```python create_db.py```:
+
+* Set **SQLALCHEMY_DATABASE_URI** in config.py
+* Login MySQL and execute script ```create schema weblog charset utf8;```
+* python create_db.py
 
 Requirements
 ------------
@@ -140,12 +149,25 @@ You should provide the markdown file(either file-path or raw-url), the target ap
 **Anyone who know the token could publish articles to your blog system, so keep it secret!!**
 
 After starting the web server locally, you can publish an article like this:
+*You should be change your token in config.py file.
 
 ````
-$ python publish.py -a http://127.0.0.1:8888/publish -p example.md
+$ python publish.py -a http://127.0.0.1:5000/publish -p example.md -t your_token_in_config
 ````
 
+Deploy application
+------------------
+gunicorn -w 4 -b 0.0.0.0:5000 run:app
 
+Delete blogs
+------------
+```
+from weblog import database,models
+db = database.db
+articles=models.Article
+articles.query.filter_by(id=1).delete()
+db.session.commit()
+```
 Features
 --------
 * Writing blogs in Markdown and YAML

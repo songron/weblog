@@ -1,17 +1,64 @@
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset=utf-8>
     <link rel="shortcut icon" href="/static/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
   {% block htmlhead %}
-  <title>{% block title %}Home{% endblock %} | {{ config.AUTHOR }}'s Thoughts and Writings</title>
+  <title>{% block title %}Home{% endblock %} | {{ config.AUTHOR }}</title>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
   {% endblock %}
+    <script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-11852900-2', 'auto');
+  ga('send', 'pageview');
+
+    </script>
   </head>
   <body>
+      <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    window._pt_lt = new Date().getTime();
+    window._pt_sp_2 = [];
+    _pt_sp_2.push('setAccount,18a7d244');
+    var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    (function() {
+        var atag = document.createElement('script'); atag.type = 'text/javascript'; atag.async = true;
+        atag.src = _protocol + 'js.ptengine.cn/pta.js';
+        var stag = document.createElement('script'); stag.type = 'text/javascript'; stag.async = true;
+        stag.src = _protocol + 'js.ptengine.cn/pts.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(atag, s); s.parentNode.insertBefore(stag, s);
+    })();
+
+</script>
+
     <div class=container>
       <div class=header>
-          <a href="/about">{{ config.AUTHOR }}</a>'s Thoughts and Writings
+          <a href="/">{{ config.AUTHOR }}</a>
       </div>
       <div class=navigation>
         <ul>
@@ -23,31 +70,14 @@
       </div>
       <div class=body>
         {% block body %}{% endblock %}
-
-        <!--
-        <div class=adspace>
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:728px;height:90px"
-               data-ad-client="ca-pub-6757320953560275"
-               data-ad-slot="8324866143"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-        -->
       </div>
       <div class=footer>
-        <p>&copy; Copyright 2015 by Rong.
+        <p>&copy; Copyright 2015 by 51ETL
         <p>
-          Content licensed under the Creative Commons
-          attribution-noncommercial-sharealike License.
+          沪ICP备16029897号，
+          Build with weblog.
         <p>
-          Contact me via <a href="mailto:rongxiaosong@gmail.com">mail</a>,
-          <a href="http://weibo.com/rongxs" target="_blank">weibo</a>,
-          <a href="https://cn.linkedin.com/pub/xiaosong-rong/45/34/9b5" target="_blank">linkedin</a>,
-          or
-          <a href="http://github.com/ghostrong" target="_blank">github</a>.
+          Contact me via <a href="mailto:13585697921@163.com">mail</a>,
         <p>
         <!--<a>Subscribe</a> this blog.
         -->
